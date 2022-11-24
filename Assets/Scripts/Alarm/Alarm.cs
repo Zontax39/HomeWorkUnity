@@ -27,13 +27,11 @@ public class Alarm : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         _animator.SetTrigger("Alarm");
-        Debug.Log("Stay");
         _alarm.IncreaseVolume();
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log("Exit");
         _alarm.Stop();
     }
 }
