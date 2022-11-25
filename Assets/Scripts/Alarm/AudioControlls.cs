@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class AudioControlls : MonoBehaviour
 {
-    [SerializeField] float _increamentVolume = 0.1f;
+    [SerializeField] private float _increamentVolume = 0.1f;
+    
     private AudioSource _alarm;
     private float _volumeTarget;
 
@@ -33,6 +35,7 @@ public class AudioControlls : MonoBehaviour
     private IEnumerator DecrementVolume()
     {
         _volumeTarget = 0;
+        
         while (_alarm.volume > 0)
         {
             _alarm.volume = Mathf.MoveTowards(_alarm.volume, _volumeTarget, _increamentVolume * Time.deltaTime);

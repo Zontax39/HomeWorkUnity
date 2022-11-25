@@ -5,17 +5,10 @@ using UnityEngine;
 
 public class Alarm : MonoBehaviour
 {
-    private AudioControlls _alarm;
-    private Color _colorAlarmHead;
-    private Animator _animator;
+    [SerializeField] AudioControlls _alarm;
+    [SerializeField] Animator _animator;
+    private int AlarmHash = Animator.StringToHash("Alarm");
     
-    private void Awake()
-    {
-        GameObject alarmHead = GameObject.Find("AlarmHead");
-        _alarm = alarmHead.GetComponent<AudioControlls>();
-        _animator = alarmHead.GetComponent<Animator>();
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent<PlayerMover>(out PlayerMover player))
@@ -26,7 +19,7 @@ public class Alarm : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        _animator.SetTrigger("Alarm");
+        _animator.SetTrigger(AlarmHash);
         _alarm.IncreaseVolume();
     }
 

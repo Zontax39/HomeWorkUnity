@@ -7,6 +7,7 @@ public class PlayerMover : MonoBehaviour
 {
    [SerializeField] private float _movespeed;
    [SerializeField] private float _jumpForce;
+   
    private bool _isGrounded = false;
    private SpriteRenderer _spriteHero;
    private Rigidbody2D _rigidbody2DHero;
